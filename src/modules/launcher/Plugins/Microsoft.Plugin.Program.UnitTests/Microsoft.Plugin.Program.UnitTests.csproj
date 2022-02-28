@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <Platforms>x64</Platforms>
+    <Platforms>x64;ARM64</Platforms>
 
     <ApplicationManifest>AppxManifests\developmentApp\AppxManifest.xml</ApplicationManifest>
   </PropertyGroup>
@@ -15,7 +15,16 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 

@@ -19,10 +19,10 @@
     <PackageTags>PowerToys</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Version>$(Version).0</Version>
-    <Platforms>x64</Platforms>
+    <Platforms>x64;ARM64</Platforms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Win32Resource />
-    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -39,7 +39,21 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\Settings</OutputPath>
+    <Optimize>false</Optimize>
+	  <PlatformTarget>ARM64</PlatformTarget>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\Settings</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutputPath>..\..\..\$(Platform)\$(Configuration)\Settings</OutputPath>
     <Optimize>true</Optimize>
   </PropertyGroup>

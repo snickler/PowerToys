@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Platforms>x64</Platforms>
+    <Platforms>x64;ARM64</Platforms>
     <Version>$(Version).0</Version>
     <Authors>Microsoft Corporation</Authors>
     <Product>PowerToys</Product>
@@ -25,11 +25,22 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+		<PlatformTarget>ARM64</PlatformTarget>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
-  <ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+		<PlatformTarget>ARM64</PlatformTarget>
+	</PropertyGroup>
+
+	<ItemGroup>
     <AdditionalFiles Include="..\..\codeAnalysis\StyleCop.json" Link="StyleCop.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AdditionalFiles>
@@ -53,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\common\interop\PowerToys.Interop.vcxproj" />
+	<ProjectReference Include="..\..\common\interop\PowerToys.Interop.vcxproj" />
     <ProjectReference Include="..\..\common\ManagedCommon\ManagedCommon.csproj" />
     <ProjectReference Include="..\..\common\ManagedTelemetry\Telemetry\ManagedTelemetry.csproj" />
   </ItemGroup>

@@ -2,8 +2,7 @@
   <Import Project="..\..\..\Version.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Platforms>x64</Platforms>
-    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64;ARM64</Platforms>
     <Version>$(Version).0</Version>
     <Authors>Microsoft Corporation</Authors>
     <Product>PowerToys</Product>
@@ -17,7 +16,15 @@
     <AssemblyName>PowerToys.PowerLauncher.Telemetry</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+		<PlatformTarget>ARM64</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
+		<ItemGroup>
     <ProjectReference Include="..\..\..\common\ManagedTelemetry\Telemetry\ManagedTelemetry.csproj" />
   </ItemGroup>
   <ItemGroup>
